@@ -1,0 +1,574 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ff4f91">
+<title>Happy Birthday Bulbul ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: white;
+    text-align: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: linear-gradient(
+        -45deg,
+        #ff1744,
+        #ff5eae,
+        #b44cff,
+        #ff9a9e,
+        #ff477e
+    );
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite;
+}
+
+@keyframes gradientBG {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+header {
+    padding: 45px 15px 25px;
+}
+
+h1 {
+    font-size: clamp(2.2rem, 8vw, 4.5rem);
+    color: #fff7b2;
+    text-shadow: 0 0 12px #ff006a, 0 0 30px #ffb3d9;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #ff006a; }
+    to { text-shadow: 0 0 28px #fff, 0 0 45px #ff008c; }
+}
+
+.subtitle {
+    font-size: clamp(1.1rem, 4vw, 1.6rem);
+    margin-top: 18px;
+    line-height: 1.7;
+}
+
+.heart {
+    display: inline-block;
+    animation: heartbeat 1s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.25); }
+}
+
+.container {
+    width: min(92%, 850px);
+    margin: 15px auto 35px;
+}
+
+.card {
+    background: rgba(90, 0, 55, 0.28);
+    border: 2px solid rgba(255,255,255,0.5);
+    border-radius: 25px;
+    padding: clamp(20px, 5vw, 38px);
+    margin: 25px 0;
+    box-shadow: 0 10px 35px rgba(80, 0, 40, 0.25);
+    backdrop-filter: blur(8px);
+}
+
+.card h2 {
+    color: #fff4a8;
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
+    margin-bottom: 22px;
+}
+
+.card p {
+    font-size: clamp(1rem, 3.5vw, 1.2rem);
+    line-height: 1.95;
+    overflow-wrap: anywhere;
+}
+
+.poem {
+    background: rgba(255, 255, 255, 0.13);
+    border-radius: 18px;
+    padding: 22px 14px;
+    margin-top: 24px;
+}
+
+.poem:nth-of-type(even) {
+    background: rgba(255, 210, 235, 0.18);
+}
+
+.poem h3 {
+    color: #fff4a8;
+    margin-bottom: 15px;
+    font-size: clamp(1.25rem, 4vw, 1.7rem);
+}
+
+.name {
+    color: #fff5a8;
+    font-weight: bold;
+}
+
+button {
+    border: 2px solid white;
+    border-radius: 50px;
+    padding: 18px 30px;
+    margin: 25px 0;
+    font-size: clamp(1rem, 4vw, 1.35rem);
+    font-weight: bold;
+    font-family: inherit;
+    color: #e6005c;
+    background: linear-gradient(45deg, #fff4a8, #ffffff, #ffb8dd);
+    box-shadow: 0 0 22px rgba(255,255,255,0.7);
+    cursor: pointer;
+    max-width: 100%;
+    transition: transform 0.3s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:hover {
+    transform: scale(1.06);
+}
+
+button:active {
+    transform: scale(0.96);
+}
+
+#surprise {
+    display: none;
+    padding: 30px 10px 50px;
+    animation: reveal 1.2s ease;
+}
+
+@keyframes reveal {
+    from { opacity: 0; transform: scale(0.7); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.big-flowers {
+    font-size: clamp(3rem, 12vw, 6rem);
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+    animation: flowerPop 2s ease-in-out infinite alternate;
+}
+
+@keyframes flowerPop {
+    from { transform: scale(0.95); }
+    to { transform: scale(1.06); }
+}
+
+#surprise h2 {
+    color: #fff4a8;
+    font-size: clamp(2rem, 8vw, 4rem);
+    margin: 15px 0;
+    text-shadow: 0 0 18px #ff006a;
+}
+
+#surprise p {
+    font-size: clamp(1.2rem, 4vw, 1.7rem);
+    line-height: 1.9;
+    padding: 0 10px;
+}
+
+.flower {
+    position: fixed;
+    top: -50px;
+    z-index: 10;
+    pointer-events: none;
+    user-select: none;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-40px) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(115vh) rotate(650deg);
+        opacity: 0.1;
+    }
+}
+
+footer {
+    padding: 25px 15px 35px;
+    font-size: 1rem;
+    line-height: 1.8;
+    background: rgba(80,0,40,0.15);
+}
+
+@media (max-width: 480px) {
+    header {
+        padding-top: 32px;
+    }
+
+    .card {
+        border-radius: 18px;
+    }
+
+    .poem {
+        padding: 20px 12px;
+    }
+
+    button {
+        width: 90%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🎂 Happy Birthday 🎂<br>
+        <span class="heart">❤️</span> BULBUL
+        <span class="heart">❤️</span>
+    </h1>
+
+    <p class="subtitle">
+        🌹 My Beautiful REENA SHARMA 🌹<br>
+        🦋 My Bulbul, My Happiness, My Special Person 🦋<br>
+        💖 Today is all about YOU! 💖
+    </p>
+</header>
+
+<main class="container">
+
+    <section class="card">
+        <h2>💝 A Special Birthday Letter 💝</h2>
+
+        <p>
+            Happy Birthday, my dearest
+            <span class="name">REENA SHARMA</span>,
+            my lovely <span class="name">BULBUL</span>! 🎂🎉❤️
+            <br><br>
+
+            Today is not just another day. Today is the birthday of
+            someone who means so much to me, someone whose happiness
+            matters to me, and someone who has a very special place
+            in my heart. 💗🌍 You are not just a name in my life;
+            you are a beautiful feeling, a precious memory, and a
+            reason behind so many of my smiles. 🥹💕
+            <br><br>
+
+            My Bulbul 🐦💖, if I could give you one gift that would
+            last forever, I would give you the ability to see yourself
+            through my eyes. You would understand how precious you are,
+            how wonderful your presence feels, and how much happiness
+            you bring into my world. 🌸✨
+            <br><br>
+
+            You deserve mornings filled with sunshine ☀️, evenings
+            filled with peace 🌙, days filled with laughter 😂, and
+            a life filled with love, success, beautiful surprises,
+            and countless reasons to smile. 🌈🌷 I hope every dream
+            you hold close to your heart slowly turns into a beautiful
+            reality. 🦋💫
+            <br><br>
+
+            Reena Sharma, my Bulbul, I may not always have the perfect
+            words to explain my feelings, but my heart has so much
+            love and appreciation for you. ❤️🥰 Even the longest
+            paragraph cannot contain every little emotion I feel
+            when I think about you. You are special in ways that
+            ordinary words can never fully explain. 💌🌹
+            <br><br>
+
+            On your birthday, I wish you a beautiful life filled with
+            good health, confidence, peace, achievements, and people
+            who genuinely care about you. 🎁🎊 May you always find
+            reasons to believe in yourself, courage to follow your
+            dreams, and happiness in the little things around you.
+            💕🌻
+            <br><br>
+
+            Thank you for being the wonderful person you are.
+            Thank you for all the little moments that make life
+            feel sweeter. Today, I hope you feel celebrated,
+            appreciated, and surrounded by warmth. 🫶💗
+            <br><br>
+
+            <span class="name">HAPPY BIRTHDAY, MY BULBUL! 🎂🐦💖</span>
+            May your beautiful smile keep shining, your heart stay
+            hopeful, and your coming year bring you more happiness
+            than you can imagine. 🌹🎉💋
+            <br><br>
+
+            With lots and lots of love,
+            today and always. ❤️🧸💝
+        </p>
+    </section>
+
+    <section class="card">
+        <h2>🌹 Poems Written for My Bulbul 🌹</h2>
+
+        <div class="poem">
+            <h3>🌸 Poem 1: My Birthday Queen 👑</h3>
+            <p>
+                Today the sky seems extra blue, 💙<br>
+                Because the world celebrates you. 🌈<br>
+                The stars are shining, the flowers bloom, 🌟🌹<br>
+                And happiness fills every room. 🎉<br><br>
+
+                Reena Sharma, sweet and bright, ✨<br>
+                You make ordinary moments light. 🦋<br>
+                My lovely Bulbul, hear me say, 🐦<br>
+                You deserve joy every single day. 💖<br><br>
+
+                May every dream find its own wings, 🕊️<br>
+                May life bring you beautiful things. 🎁<br>
+                May laughter stay and worries flee, 🌻<br>
+                Happy birthday, my precious Reena, to thee! ❤️
+            </p>
+        </div>
+
+        <div class="poem">
+            <h3>💌 Poem 2: If I Could Gift You the World 🌍</h3>
+            <p>
+                If I could gift you the morning sun, ☀️<br>
+                I'd give you warmth and days of fun. 🌷<br>
+                If I could gift you the ocean blue, 🌊<br>
+                I'd fill its waves with wishes for you. 💙<br><br>
+
+                If I could gather the stars above, 🌟<br>
+                I'd wrap them gently in a gift of love. 🎁<br>
+                If every flower could speak today, 🌹<br>
+                They'd wish you joy in every way. 🌸<br><br>
+
+                My dear Bulbul, remember this, 🐦💋<br>
+                You deserve a life of joy and bliss. 💖<br>
+                And on this day, my wish is true, 🥹<br>
+                May the world be extra kind to you. ❤️
+            </p>
+        </div>
+
+        <div class="poem">
+            <h3>🦋 Poem 3: My Beautiful Bulbul 🐦</h3>
+            <p>
+                A little bird with a heart so sweet, 🐦<br>
+                Makes every moment feel complete. 💕<br>
+                A lovely smile, a gentle glow, 🌸<br>
+                A thousand reasons for love to grow. 🌱❤️<br><br>
+
+                Bulbul, your name feels like a song, 🎶<br>
+                A melody that travels along. 🎵<br>
+                Through happy moments, bright and new, 🌈<br>
+                My birthday wishes fly to you. 💌<br><br>
+
+                Keep chasing dreams and reaching high, 🦋<br>
+                Keep finding rainbows in the sky. 🌈<br>
+                May joy and kindness light your way, 🕯️<br>
+                Happy birthday, Reena, today and every day! 🎂💖
+            </p>
+        </div>
+
+        <div class="poem">
+            <h3>💖 Poem 4: A Thousand Little Wishes 💫</h3>
+            <p>
+                One wish for laughter, bright and clear, 😂<br>
+                One wish for those you hold most dear. 🫶<br>
+                One wish for courage when days are tough, 💪<br>
+                One wish to remind you that you are enough. 🌷<br><br>
+
+                A wish for sunshine after rain, 🌦️<br>
+                A wish for peace when life feels strange. 🕊️<br>
+                A wish for dreams that come alive, 🌟<br>
+                And countless reasons to laugh and thrive. 🌻<br><br>
+
+                A thousand wishes, wrapped in cheer, 🎁<br>
+                For my lovely Bulbul, year after year. 💝<br>
+                May this new chapter bring you delight, 🌙<br>
+                And make your birthday magical and bright! 🎉❤️
+            </p>
+        </div>
+
+        <div class="poem">
+            <h3>🌙 Poem 5: My Favourite Birthday Wish 💋</h3>
+            <p>
+                When midnight brings your special day, 🌙<br>
+                I send a thousand wishes your way. 💌<br>
+                May every morning bring you grace, ☀️<br>
+                May happiness always find its place. 🌸<br><br>
+
+                Reena Sharma, lovely and true, 💗<br>
+                The world is brighter because of you. 🌈<br>
+                My Bulbul, may your heart feel light, 🐦<br>
+                May your future shine ever so bright. ✨<br><br>
+
+                So close your eyes and make a wish, 🎂<br>
+                For all the joys that life can give. 🎁<br>
+                Here's to your dreams and all you'll do, 🥂<br>
+                Happy birthday, Bulbul! This wish is for you! ❤️🌹
+            </p>
+        </div>
+
+        <div class="poem">
+            <h3>🌹 Poem 6: A Garden of Love 🌺</h3>
+            <p>
+                If love were flowers, you'd have a sea, 🌹🌷<br>
+                A garden growing endlessly. 🌻🌼<br>
+                If love were stars, you'd own the night, 🌟<br>
+                A sky of dreams, so warm and bright. 🌌<br><br>
+
+                If love were music, you'd be the song, 🎶<br>
+                The gentle tune that carries along. 💞<br>
+                If love were words, these lines would show, 💌<br>
+                A little of the love I hope you know. ❤️<br><br>
+
+                Happy birthday, my dear Reena, 💖<br>
+                May happiness forever surround you. 🦋<br>
+                My sweet Bulbul, laugh and shine, 🐦<br>
+                And may your days be truly divine! 🎂🌈
+            </p>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>🎁 Your Special Surprise Is Waiting! 🎁</h2>
+        <p>
+            My Bulbul, I have one more little surprise for you! 🥹💗
+            <br>
+            Take a deep breath, smile your sweetest smile, and tap
+            the button below. 🌸✨
+            <br><br>
+            Made with love, especially for REENA SHARMA. ❤️🐦
+        </p>
+
+        <button id="surpriseButton" onclick="showSurprise()">
+            🎁 CLICK HERE, BULBUL! 💖
+        </button>
+
+        <div id="surprise">
+            <div class="big-flowers">
+                🌹🌸🌺🌷🌼<br>
+                💐🌻💖🌻💐<br>
+                🌷🌺🌸🌹🌷
+            </div>
+
+            <h2>💖 THIS IS FOR YOU! 💖</h2>
+
+            <p>
+                To my beautiful REENA SHARMA,<br>
+                my sweet and lovely BULBUL! 🐦💋
+                <br><br>
+                🌹 These flowers are for you. 🌹<br>
+                🌸 Every petal carries a little wish. 🌸<br>
+                💖 Every colour carries a little happiness. 💖<br>
+                🎁 And this entire surprise carries lots of love! 🎁
+                <br><br>
+                You deserve all the beautiful things this world
+                has to offer. Never forget how special you are.
+                Keep smiling, keep dreaming, and keep being YOU! 🦋✨
+                <br><br>
+                <strong>HAPPY BIRTHDAY, MY BULBUL! 🎂❤️</strong>
+                <br>
+                May your life bloom like a garden full of flowers. 🌷🌹
+                <br><br>
+                💋💗🧸🎀🌈🎉🥰💐
+            </p>
+
+            <div class="big-flowers">
+                🌹🌹🌹🌹🌹<br>
+                💐💐💐💐💐
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    🌹 Made with lots of love for REENA SHARMA 🌹<br>
+    🐦 Forever my special Bulbul 🐦<br>
+    🎂 Happy Birthday! ❤️💖🌸
+</footer>
+
+<script>
+const flowerEmojis = [
+    "🌹", "🌸", "🌺", "🌷", "🌼",
+    "💮", "🪷", "💐", "❤️", "💖"
+];
+
+function createFlower() {
+    const flower = document.createElement("div");
+    flower.className = "flower";
+
+    flower.textContent =
+        flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
+
+    flower.style.left = Math.random() * 100 + "vw";
+    flower.style.fontSize = (18 + Math.random() * 24) + "px";
+
+    const duration = 4 + Math.random() * 5;
+    flower.style.animationDuration = duration + "s";
+
+    document.body.appendChild(flower);
+
+    setTimeout(() => {
+        flower.remove();
+    }, duration * 1000);
+}
+
+// Gentle flower rain throughout the website.
+setInterval(createFlower, 300);
+
+// Add extra flowers when the surprise is opened.
+let surpriseOpened = false;
+
+function showSurprise() {
+    const surprise = document.getElementById("surprise");
+    const button = document.getElementById("surpriseButton");
+
+    surprise.style.display = "block";
+    button.textContent = "💖 YOUR SURPRISE IS OPEN! 💖";
+
+    surprise.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+    if (!surpriseOpened) {
+        surpriseOpened = true;
+
+        // A temporary shower of extra flowers.
+        let count = 0;
+
+        const shower = setInterval(() => {
+            for (let i = 0; i < 4; i++) {
+                createFlower();
+            }
+
+            count++;
+
+            if (count >= 35) {
+                clearInterval(shower);
+            }
+        }, 180);
+    }
+}
+</script>
+
+</body>
+</html>
+```
